@@ -186,6 +186,7 @@ filetype plugin indent on     " required!
 "}
 
 map <C-t> <Esc>:NERDTree<CR>
+imap <C-l> <Esc>
 
 "powerline{
 set guifont=PowerlineSymbols\ for\ Powerline
