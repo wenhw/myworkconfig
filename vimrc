@@ -126,7 +126,7 @@ au BufReadPost *.nfo call RestoreFileEncodings()
 let g:vimwiki_use_mouse = 1
 " 不要将驼峰式词组作为 Wiki 词条
 let g:vimwiki_camel_case = 0
-let g:vimwiki_list = [{'path': '/Users/wenhaiwen/Documents/vimwiki','path_html': '/Users/wenhaiwen/Documents/wimwiki_html','auto_export': 1,}]
+let g:vimwiki_list = [{'path': '/Users/xxx/Documents/vimwiki','path_html': '/Users/xxx/Documents/wimwiki_html','auto_export': 1,}]
 "}
 
 
