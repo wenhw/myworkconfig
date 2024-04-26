@@ -1,0 +1,65 @@
+parsers: # array
+  - url: https://subscribe_address
+    yaml:
+      prepend-rules:
+        - DOMAIN-SUFFIX,openai.com,🤖ChatGPT
+        - DOMAIN-SUFFIX,chatgpt.com,🤖ChatGPT
+        - DOMAIN,www.google.com,🔰国外流量
+        - DOMAIN,bard.google.com,🤖ChatGPT
+        - DOMAIN,makersuite.google.com,🤖ChatGPT
+        - DOMAIN,generativelanguage.googleapis.com,🤖ChatGPT
+        - DOMAIN,ai.google.dev,🤖ChatGPT
+        - DOMAIN-KEYWORD,google,🤖ChatGPT
+        - DOMAIN-SUFFIX,claude.ai,🤖ChatGPT
+        - DOMAIN-SUFFIX,coze.com,🤖ChatGPT
+        - DOMAIN-SUFFIX,ietf.org,DIRECT
+        - DOMAIN-SUFFIX,goframe.org,🔰国外流量
+        - DOMAIN-SUFFIX,docker.com,🔰国外流量
+        - DOMAIN,copilot.microsoft.com,🤖ChatGPT
+        - DOMAIN-SUFFIX,live.com,🤖ChatGPT
+        - DOMAIN-SUFFIX,intercom.io,🤖ChatGPT
+
+      prepend-proxy-groups:
+        - name: 😀Strategy
+          type: fallback
+          proxies:
+            - 👉手选
+            - 🏃回退
+            - 🔨矮子中找将军
+          url: 'https://www.gstatic.com/generate_204'
+          interval: 300
+          lazy: false
+          # lazy: true #在策略组没有被使用时候，不进行延迟测试
+
+        - name: 👉手选
+          type: select
+          proxies:
+            - DIRECT
+
+        - name: 🏃回退
+          type: fallback
+          proxies:
+            - DIRECT
+          url: 'https://www.gstatic.com/generate_204'
+          interval: 300
+          lazy: false
+        
+        - name: 🔨矮子中找将军
+          type: url-test
+          url: 'https://www.gstatic.com/generate_204'
+          interval: 300
+          proxies:
+            - DIRECT
+        
+        - name: 🤖ChatGPT
+          type: select
+          proxies:
+            - DIRECT
+      
+      commands:
+        - proxy-groups.👉手选.proxies=[]proxyNames
+        - proxy-groups.🏃回退.proxies=[]proxyNames|308|329|356|358|334|338|370|380|387
+        - proxy-groups.🔨矮子中找将军.proxies=[]proxyNames|US|UK|DE|RU
+        - proxy-groups.🔰国外流量.proxies.0+😀Strategy
+        - proxy-groups.🤖ChatGPT.proxies=[]proxyNames|US|UK|DE|RU|SG|JP
+
