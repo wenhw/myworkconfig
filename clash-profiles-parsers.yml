@@ -20,6 +20,9 @@ parsers: # array
         - DOMAIN-SUFFIX,intercom.io,🤖ChatGPT
 
       prepend-proxy-groups:
+        # 😀Strategy代理组逻辑：首先使用手动选择的节点，节点不通的话，选择回退中第一个能用节点;
+        # 回退中所有节点都不可用，则从矮子中选择速度最快的节点;
+        # 在任何情况下，当手选节点可用时，都会切换回手选节点，哪怕当前在使用回退或矮子中的节点。
         - name: 😀Strategy
           type: fallback
           proxies:
